@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✨ My Dreamy Bunny Wishlist ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-cream: #fff5f8;
+      --pink-soft: #ffe3ec;
+      --pink-mid: #ffb3c6;
+      --pink-deep: #ff7597;
+      --pink-accent: #ff4d7d;
+      --strawberry: #ff3b6b;
+      --mint: #b8f2e6;
+      --mint-deep: #2ec4b6;
+      --butter: #fff3b0;
+      --lavender: #e5d4ff;
+      --cocoa: #59333e;
+      --cocoa-light: #8c5a67;
+      --white-card: #fffdfd;
+      --shadow-pink: rgba(255, 117, 151, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--cocoa);
+      background-color: var(--bg-cream);
+      /* Pastel pink gingham + polka-dot stationery paper pattern */
+      background-image:
+        radial-gradient(rgba(255, 117, 151, 0.16) 2px, transparent 2px),
+        repeating-linear-gradient(
+          45deg,
+          rgba(255, 227, 236, 0.35) 0px,
+          rgba(255, 227, 236, 0.35) 14px,
+          transparent 14px,
+          transparent 28px
+        );
+      background-size: 28px 28px, 100% 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 72px;
+    }
+
+    h1, h2, h3, .font-fredoka, button, .pill-badge {
+      font-family: 'Fredoka', sans-serif;
+    }
+
+    /* Subtle floating stationery charms behind UI */
+    .floating-charms {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .charm {
+      position: absolute;
+      font-size: 1.35rem;
+      opacity: 0.28;
+      animation: floatSlow 14s ease-in-out infinite;
+      user-select: none;
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(-6deg); }
+      50% { transform: translateY(-22px) rotate(8deg); }
+    }
+
+    /* Celebratory burst canvas */
+    #burstCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Friend / Gift-Giver Sticky Banner */
+    .friend-banner {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background: linear-gradient(90deg, #ff7597, #ff4d7d, #ff7597);
+      color: #fff;
+      padding: 12px 20px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 16px rgba(255, 77, 125, 0.32);
+      border-bottom: 3px dashed #fff3b0;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .friend-banner.active {
+      display: flex;
+    }
+
+    .friend-banner-btn {
+      background: #fff;
+      color: var(--pink-accent);
+      border: 2px solid var(--cocoa);
+      border-radius: 999px;
+      padding: 6px 15px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 0 var(--cocoa);
+      transition: transform 0.15s ease;
+    }
+
+    .friend-banner-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Main Container */
+    .app-shell {
+      position: relative;
+      z-index: 2;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px 18px 40px;
+    }
+
+    /* Stationery Header Card with Scalloped Lace Edge */
+    .stationery-header {
+      position: relative;
+      background: var(--white-card);
+      border: 3px solid var(--pink-mid);
+      border-radius: 32px 32px 20px 20px;
+      padding: 26px 28px 34px;
+      box-shadow: 0 10px 28px var(--shadow-pink), inset 0 0 0 5px var(--pink-soft);
+      margin-bottom: 28px;
+    }
+
+    /* Scalloped Lace Bottom Edge */
+    .stationery-header::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: -13px;
+      height: 14px;
+      background-image: radial-gradient(circle at 12px 0, var(--white-card) 10px, var(--pink-mid) 10.5px, var(--pink-mid) 12.5px, transparent 13px);
+      background-size: 24px 14px;
+      background-repeat: repeat-x;
+    }
+
+    .header-top-ribbon {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .ribbon-tag {
+      background: var(--pink-soft);
+      color: var(--pink-accent);
+      border: 2px dashed var(--pink-deep);
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    /* Currency Toggle Pill */
+    .currency-toggle {
+      display: inline-flex;
+      background: var(--pink-soft);
+      border: 2px solid var(--pink-mid);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .currency-btn {
+      border: none;
+      background: transparent;
+      color: var(--cocoa-light);
+      padding: 4px 11px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .currency-btn.active {
+      background: var(--pink-deep);
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(255, 77, 125, 0.3);
+    }
+
+    .header-hero {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    /* Pink-Hooded Bunny Mascot */
+    .mascot-wrap {
+      flex-shrink: 0;
+      width: 112px;
+      height: 112px;
+      background: radial-gradient(circle, var(--pink-soft) 0%, #fff 74%);
+      border: 3px solid var(--pink-mid);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 14px rgba(255, 117, 151, 0.2);
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .mascot-wrap:hover {
+      animation: bunnyBounce 0.65s ease infinite;
+    }
+
+    @keyframes bunnyBounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      45% { transform: translateY(-9px) scale(1.04, 0.97); }
+      75% { transform: translateY(2px) scale(0.98, 1.02); }
+    }
+
+    .header-info {
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .wishlist-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    #wishlistTitle {
+      font-size: clamp(1.55rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--cocoa);
+      line-height: 1.2;
+      padding: 3px 8px;
+      margin-left: -8px;
+      border-radius: 14px;
+      border: 2px dashed transparent;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    #wishlistTitle[contenteditable="true"]:hover,
+    #wishlistTitle[contenteditable="true"]:focus {
+      background: var(--bg-cream);
+      border-color: var(--pink-deep);
+    }
+
+    .edit-hint {
+      font-size: 0.78rem;
+      color: var(--cocoa-light);
+      background: var(--butter);
+      border: 1.5px solid #f0d775;
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .header-subtitle {
+      color: var(--cocoa-light);
+      font-size: 0.96rem;
+      font-weight: 600;
+      margin-top: 4px;
+      margin-bottom: 14px;
+    }
+
+    /* Stats Counter Pills */
+    .stats-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border: 2px solid;
+    }
+
+    .stat-pill.pink {
+      background: var(--pink-soft);
+      border-color: var(--pink-mid);
+      color: var(--cocoa);
+    }
+
+    .stat-pill.butter {
+      background: var(--butter);
+      border-color: #f3d778;
+      color: var(--cocoa);
+    }
+
+    .stat-pill.mint {
+      background: var(--mint);
+      border-color: #84dcc6;
+      color: #1f5c55;
+    }
+
+    /* Primary Action Bar */
+    .action-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 2px dashed var(--pink-mid);
+    }
+
+    .action-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 0.93rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2.5px solid var(--cocoa);
+      box-shadow: 0 3px 0 var(--cocoa);
+      transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease;
+      text-decoration: none;
+    }
+
+    .btn-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 var(--cocoa);
+      filter: brightness(1.03);
+    }
+
+    .btn-pill:active {
+      transform: translateY(1px);
+      box-shadow: 0 1px 0 var(--cocoa);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff85a2, #ff4d7d);
+      color: #fff;
+    }
+
+    .btn-mint {
+      background: linear-gradient(135deg, #c9f7ed, #9cebd9);
+      color: var(--cocoa);
+    }
+
+    .btn-lavender {
+      background: var(--lavender);
+      color: var(--cocoa);
+    }
+
+    .btn-cream {
+      background: #fff;
+      color: var(--cocoa);
+    }
+
+    .btn-sm {
+      padding: 7px 13px;
+      font-size: 0.83rem;
+      border-width: 2px;
+      box-shadow: 0 2px 0 var(--cocoa);
+    }
+
+    /* Filter & Sort Stationery Toolbar */
+    .filter-toolbar {
+      background: var(--white-card);
+      border: 2.5px solid var(--pink-mid);
+      border-radius: 24px;
+      padding: 16px 18px;
+      box-shadow: 0 6px 18px var(--shadow-pink);
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .category-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .cat-pill {
+      background: var(--bg-cream);
+      color: var(--cocoa);
+      border: 2px solid var(--pink-mid);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.16s ease;
+    }
+
+    .cat-pill:hover {
+      background: var(--pink-soft);
+      transform: translateY(-1px);
+    }
+
+    .cat-pill.active {
+      background: var(--pink-deep);
+      color: #fff;
+      border-color: var(--pink-accent);
+      box-shadow: 0 3px 8px rgba(255, 77, 125, 0.28);
+    }
+
+    .toolbar-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .status-tabs {
+      display: inline-flex;
+      background: var(--pink-soft);
+      border: 2px solid var(--pink-mid);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .status-tab {
+      border: none;
+      background: transparent;
+      color: var(--cocoa);
+      padding: 5px 13px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.16s ease;
+    }
+
+    .status-tab.active {
+      background: #fff;
+      color: var(--pink-accent);
+      box-shadow: 0 2px 6px rgba(255, 117, 151, 0.22);
+    }
+
+    .search-sort-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 250px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .kawaii-input, .kawaii-select, .kawaii-textarea {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      color: var(--cocoa);
+      background: var(--bg-cream);
+      border: 2px solid var(--pink-mid);
+      border-radius: 16px;
+      padding: 9px 14px;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .kawaii-input:focus, .kawaii-select:focus, .kawaii-textarea:focus {
+      border-color: var(--pink-accent);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(255, 117, 151, 0.2);
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 190px;
+      max-width: 310px;
+      border-radius: 999px;
+    }
+
+    /* Wishlist Card Grid */
+    .wish-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+      gap: 20px;
+    }
+
+    .wish-card {
+      position: relative;
+      background: var(--white-card);
+      border: 2.5px solid #ffd1df;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px var(--shadow-pink);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .wish-card:hover {
+      transform: translateY(-6px) rotate(0.45deg);
+      border-color: var(--pink-deep);
+      box-shadow: 0 14px 28px rgba(255, 77, 125, 0.24);
+    }
+
+    .wish-card.is-granted {
+      background: linear-gradient(180deg, #fffdf9 0%, #fff4f8 100%);
+      border-color: #9be8d8;
+    }
+
+    /* Top Card Artwork Window */
+    .card-art-box {
+      position: relative;
+      height: 170px;
+      background: linear-gradient(135deg, #ffe7ef 0%, #fff7fa 55%, #f3e8ff 100%);
+      border-bottom: 2px dashed var(--pink-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .card-art-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-svg-art {
+      width: 124px;
+      height: 124px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 5px 8px rgba(255, 117, 151, 0.22));
+    }
+
+    .priority-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 2px solid var(--pink-mid);
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 0.85rem;
+      color: var(--pink-accent);
+      letter-spacing: 1px;
+      box-shadow: 0 2px 6px rgba(89, 51, 62, 0.08);
+    }
+
+    .category-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 243, 176, 0.95);
+      border: 2px solid #f0d775;
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--cocoa);
+    }
+
+    /* Dreamy Granted Ribbon Overlay */
+    .granted-ribbon {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 245, 248, 0.58);
+      backdrop-filter: blur(1.5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+    }
+
+    .granted-ribbon span {
+      background: linear-gradient(135deg, #2ec4b6, #6ee7b7);
+      color: #fff;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 7px 20px;
+      border-radius: 999px;
+      border: 2.5px solid var(--cocoa);
+      box-shadow: 0 4px 0 var(--cocoa);
+      transform: rotate(-4deg);
+    }
+
+    .card-body {
+      padding: 16px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 10px;
+    }
+
+    .card-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .card-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--cocoa);
+      line-height: 1.3;
+    }
+
+    .is-granted .card-title {
+      text-decoration: line-through;
+      opacity: 0.75;
+    }
+
+    .price-badge {
+      flex-shrink: 0;
+      background: var(--pink-soft);
+      color: var(--pink-accent);
+      border: 2px solid var(--pink-mid);
+      border-radius: 999px;
+      padding: 3px 11px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .card-notes {
+      background: var(--bg-cream);
+      border: 1.5px dashed var(--pink-mid);
+      border-radius: 14px;
+      padding: 8px 11px;
+      font-size: 0.84rem;
+      color: var(--cocoa-light);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .store-link-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--lavender);
+      color: var(--cocoa);
+      border: 2px solid #c9b0ff;
+      border-radius: 12px;
+      padding: 6px 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.16s ease;
+    }
+
+    .store-link-btn:hover {
+      background: #d8c2ff;
+      transform: translateY(-1px);
+    }
+
+    .card-footer-actions {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 2px dashed var(--pink-soft);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .card-footer-actions .btn-grant {
+      flex: 1;
+      background: var(--mint);
+      color: #164e48;
+    }
+
+    .card-footer-actions .btn-grant.granted-state {
+      background: var(--butter);
+      color: var(--cocoa);
+    }
+
+    .btn-reserve {
+      width: 100%;
+      background: linear-gradient(135deg, #ffe3ec, #ffb3c6);
+      color: var(--cocoa);
+    }
+
+    .btn-reserve.reserved {
+      background: linear-gradient(135deg, #2ec4b6, #80ed99);
+      color: #fff;
+    }
+
+    /* Empty State */
+    .empty-state {
+      grid-column: 1 / -1;
+      background: var(--white-card);
+      border: 3px dashed var(--pink-mid);
+      border-radius: 28px;
+      padding: 46px 24px;
+      text-align: center;
+      box-shadow: 0 8px 20px var(--shadow-pink);
+    }
+
+    .empty-state-emoji {
+      font-size: 3.2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Modals */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(89, 51, 62, 0.48);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 200;
+      overflow-y: auto;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--white-card);
+      border: 3px solid var(--pink-deep);
+      border-radius: 28px;
+      width: 100%;
+      max-width: 530px;
+      padding: 24px 26px;
+      box-shadow: 0 16px 40px rgba(89, 51, 62, 0.28), inset 0 0 0 4px var(--pink-soft);
+      animation: popIn 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.92) translateY(12px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px dashed var(--pink-mid);
+    }
+
+    .modal-header h2 {
+      font-size: 1.35rem;
+      color: var(--cocoa);
+    }
+
+    .close-modal-btn {
+      background: var(--pink-soft);
+      border: 2px solid var(--pink-mid);
+      color: var(--cocoa);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 1.05rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--cocoa);
+    }
+
+    .form-error {
+      color: var(--strawberry);
+      font-size: 0.82rem;
+      font-weight: 800;
+      display: none;
+    }
+
+    .form-error.visible {
+      display: block;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 2px dashed var(--pink-soft);
+    }
+
+    /* Share Modal Tabs & Sections */
+    .share-tabs {
+      display: flex;
+      gap: 6px;
+      background: var(--pink-soft);
+      padding: 4px;
+      border-radius: 999px;
+      border: 2px solid var(--pink-mid);
+      margin-bottom: 16px;
+    }
+
+    .share-tab-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      color: var(--cocoa);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.16s ease;
+    }
+
+    .share-tab-btn.active {
+      background: var(--pink-deep);
+      color: #fff;
+    }
+
+    .share-panel {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .share-panel.active {
+      display: flex;
+    }
+
+    .share-preview-canvas-wrap {
+      background: var(--bg-cream);
+      border: 2px dashed var(--pink-mid);
+      border-radius: 18px;
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #shareCardCanvas {
+      max-width: 100%;
+      height: auto;
+      max-height: 330px;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(89, 51, 62, 0.14);
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 500;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 340px;
+    }
+
+    .kawaii-toast {
+      background: var(--white-card);
+      border: 2.5px solid var(--cocoa);
+      border-radius: 18px;
+      padding: 12px 16px;
+      box-shadow: 0 5px 0 var(--cocoa), 0 10px 24px rgba(89, 51, 62, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      animation: slideToast 0.22s ease;
+    }
+
+    @keyframes slideToast {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .undo-btn {
+      background: var(--butter);
+      border: 2px solid var(--cocoa);
+      border-radius: 999px;
+      padding: 4px 11px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    @media (max-width: 640px) {
+      .stationery-header {
+        padding: 20px 18px 28px;
+      }
+      .header-hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .wishlist-title-row, .stats-row {
+        justify-content: center;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Subtle Floating Stationery Charms -->
+  <div class="floating-charms" aria-hidden="true">
+    <span class="charm" style="top: 7%; left: 4%; animation-delay: 0s;">🍓</span>
+    <span class="charm" style="top: 15%; right: 6%; animation-delay: 2s;">🎀</span>
+    <span class="charm" style="top: 42%; left: 2%; animation-delay: 4s;">🌸</span>
+    <span class="charm" style="top: 56%; right: 4%; animation-delay: 1.5s;">💖</span>
+    <span class="charm" style="top: 80%; left: 7%; animation-delay: 3.2s;">🐰</span>
+    <span class="charm" style="top: 85%; right: 8%; animation-delay: 5s;">🍰</span>
+  </div>
+
+  <!-- Celebratory Sparkle Canvas -->
+  <canvas id="burstCanvas"></canvas>
+
+  <!-- Friend / Gift-Giver Sticky Banner -->
+  <div id="friendBanner" class="friend-banner" role="region" aria-label="Friend Gift-Giver Mode">
+    <span>🎁 Friend Gift-Giver View — Tap "Reserve Gift" so nobody buys duplicates!</span>
+    <button type="button" class="friend-banner-btn" onclick="saveSharedCopyToMyList()">💖 Save Copy to My Wishlist</button>
+    <button type="button" id="exitPreviewBtn" class="friend-banner-btn" onclick="exitFriendPreview()">Exit Preview ✨</button>
+  </div>
+
+  <main class="app-shell">
+    <!-- Stationery Header Card -->
+    <header class="stationery-header">
+      <div class="header-top-ribbon">
+        <span class="ribbon-tag">🍓 Sweet Bunny Stationery Edition • Auto-Saved Locally</span>
+        <div class="currency-toggle" role="group" aria-label="Currency Selector">
+          <button type="button" class="currency-btn active" data-curr="€" onclick="setCurrency('€')">€ EUR</button>
+          <button type="button" class="currency-btn" data-curr="$" onclick="setCurrency('$')">$ USD</button>
+          <button type="button" class="currency-btn" data-curr="£" onclick="setCurrency('£')">£ GBP</button>
+        </div>
+      </div>
+
+      <div class="header-hero">
+        <!-- Inline SVG Pink-Hooded Bunny Mascot (Chibi Plushie Style) -->
+        <div class="mascot-wrap" title="Boop the squishy bunny! 🐰🍓" onclick="boopMascot(event)">
+          <svg viewBox="0 0 140 140" width="94" height="94" xmlns="http://www.w3.org/2000/svg" aria-label="Chibi Round Plushie Bunny Mascot">
+            <!-- Left Thick Floppy Ear (Behind head) -->
+            <ellipse cx="34" cy="38" rx="22" ry="44" transform="rotate(-40 34 38)" fill="#ff85a2" stroke="#59333e" stroke-width="3.5" />
+            <ellipse cx="34" cy="38" rx="11" ry="32" transform="rotate(-40 34 38)" fill="#ffc2d4" />
+            
+            <!-- Right Thick Floppy Ear (Behind head) -->
+            <ellipse cx="106" cy="38" rx="22" ry="44" transform="rotate(40 106 38)" fill="#ff85a2" stroke="#59333e" stroke-width="3.5" />
+            <ellipse cx="106" cy="38" rx="11" ry="32" transform="rotate(40 106 38)" fill="#ffc2d4" />
+
+            <!-- Tiny Squishy Body (Behind head) -->
+            <ellipse cx="70" cy="118" rx="36" ry="20" fill="#ff85a2" stroke="#59333e" stroke-width="3.5" />
+            <!-- Little Cream Tummy -->
+            <ellipse cx="70" cy="120" rx="20" ry="12" fill="#fffdfd" stroke="#59333e" stroke-width="3" />
+            
+            <!-- Little Paws (Arms holding tummy) -->
+            <circle cx="45" cy="116" r="8" fill="#ff85a2" stroke="#59333e" stroke-width="3.5" />
+            <circle cx="95" cy="116" r="8" fill="#ff85a2" stroke="#59333e" stroke-width="3.5" />
+
+            <!-- Huge Round Squishy Pink Hood Head -->
+            <ellipse cx="70" cy="68" rx="58" ry="48" fill="#ff85a2" stroke="#59333e" stroke-width="3.5" />
+            
+            <!-- Very Round Cream Face -->
+            <ellipse cx="70" cy="74" rx="48" ry="40" fill="#fffdfd" stroke="#59333e" stroke-width="3" />
+            
+            <!-- Cute Widely Spaced Eyes -->
+            <ellipse cx="40" cy="74" rx="5.5" ry="8" fill="#59333e" />
+            <circle cx="38" cy="70" r="2.5" fill="#fff" />
+            
+            <ellipse cx="100" cy="74" rx="5.5" ry="8" fill="#59333e" />
+            <circle cx="98" cy="70" r="2.5" fill="#fff" />
+            
+            <!-- Big Soft Blushing Cheeks -->
+            <ellipse cx="32" cy="84" rx="9" ry="6" fill="#ffb3c6" opacity="0.85" />
+            <ellipse cx="108" cy="84" rx="9" ry="6" fill="#ffb3c6" opacity="0.85" />
+            
+            <!-- Tiny Round Nose -->
+            <circle cx="70" cy="80" r="3.5" fill="#ff4d7d" />
+            
+            <!-- Tiny Squiggly Smile -->
+            <path d="M62 86 Q66 91 70 86 Q74 91 78 86" fill="none" stroke="#59333e" stroke-width="2.8" stroke-linecap="round" />
+
+            <!-- Cute Neck Bow -->
+            <g transform="translate(70, 114)">
+              <ellipse cx="-13" cy="0" rx="12" ry="9" transform="rotate(-15 -13 0)" fill="#fffdfd" stroke="#59333e" stroke-width="3.5" />
+              <ellipse cx="13" cy="0" rx="12" ry="9" transform="rotate(15 13 0)" fill="#fffdfd" stroke="#59333e" stroke-width="3.5" />
+              <circle cx="0" cy="0" r="6.5" fill="#fff3b0" stroke="#59333e" stroke-width="3.5" />
+            </g>
+          </svg>
+        </div>
+
+        <div class="header-info">
+          <div class="wishlist-title-row">
+            <h1 id="wishlistTitle" contenteditable="true" spellcheck="false" title="Click to edit your wishlist title">✨ My Dreamy Bunny Wishlist ✨</h1>
+            <span id="titleEditHint" class="edit-hint">✏️ Click title to rename</span>
+          </div>
+          <p class="header-subtitle">Collect cute treasures, plushies, cozy outfits &amp; sweet gifts in your personal stationery notebook 🌸</p>
+
+          <div class="stats-row">
+            <div class="stat-pill pink">🎀 Total Wishes: <strong id="statTotalCount">0</strong></div>
+            <div class="stat-pill butter">🍓 Estimated Total: <strong id="statEstimatedTotal">€0.00</strong></div>
+            <div class="stat-pill mint">✨ Granted: <strong id="statGrantedCount">0</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Primary Action Bar -->
+      <div class="action-bar" id="ownerActionBar">
+        <div class="action-group">
+          <button type="button" class="btn-pill btn-primary" onclick="openAddModal()">+ Add New Wish 🌸</button>
+          <button type="button" class="btn-pill btn-mint" onclick="openShareModal()">💌 Share Wishlist</button>
+          <button type="button" class="btn-pill btn-lavender" onclick="enterFriendPreview()">👀 Preview Friend View</button>
+        </div>
+        <div class="action-group">
+          <button type="button" class="btn-pill btn-cream btn-sm" onclick="exportBackupJSON()">💾 Export JSON</button>
+          <button type="button" class="btn-pill btn-cream btn-sm" onclick="document.getElementById('importFileInput').click()">📂 Import JSON</button>
+          <input type="file" id="importFileInput" accept=".json,application/json" style="display: none;" onchange="importBackupJSON(event)" />
+        </div>
+      </div>
+    </header>
+
+    <!-- Filter & Sort Stationery Toolbar -->
+    <section class="filter-toolbar" aria-label="Filter and sort wishes">
+      <div class="category-pills" id="categoryPills"></div>
+
+      <div class="toolbar-controls">
+        <div class="status-tabs" role="tablist">
+          <button type="button" class="status-tab active" data-status="all" onclick="setStatusFilter('all')">All</button>
+          <button type="button" class="status-tab" data-status="wishing" onclick="setStatusFilter('wishing')">Wishing 💭</button>
+          <button type="button" class="status-tab" data-status="granted" onclick="setStatusFilter('granted')">Granted ✨</button>
+        </div>
+
+        <div class="search-sort-group">
+          <input type="search" id="searchInput" class="kawaii-input search-box" placeholder="🔍 Search wishes or notes..." oninput="handleSearchInput(this.value)" />
+          <select id="sortSelect" class="kawaii-select" aria-label="Sort wishes" onchange="handleSortChange(this.value)">
+            <option value="newest">Sort: Newest ✨</option>
+            <option value="priority">Sort: Highest Priority 💖</option>
+            <option value="price-asc">Sort: Price Low to High 🍓</option>
+            <option value="price-desc">Sort: Price High to Low 👑</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wishlist Grid -->
+    <section id="wishGrid" class="wish-grid" aria-live="polite"></section>
+  </main>
+
+  <!-- Add / Edit Wish Modal -->
+  <div id="wishModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="wishModalHeading" onclick="if(event.target===this) closeWishModal()">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 id="wishModalHeading">🌸 Add a New Dream Wish</h2>
+        <button type="button" class="close-modal-btn" aria-label="Close modal" onclick="closeWishModal()">✕</button>
+      </div>
+
+      <form id="wishForm" onsubmit="event.preventDefault(); commitSaveWish();">
+        <input type="hidden" id="wishId" value="" />
+        <div class="form-grid">
+          <div class="form-group full">
+            <label for="wishTitle">Wish Title *</label>
+            <input type="text" id="wishTitle" class="kawaii-input" placeholder="e.g., Strawberry Milk Bunny Plushie" autocomplete="off" />
+            <span id="wishTitleError" class="form-error">Please give your dream wish a cute title! 🍓</span>
+          </div>
+
+          <div class="form-group">
+            <label for="wishCategory">Category</label>
+            <select id="wishCategory" class="kawaii-select">
+              <option value="Plushies & Toys">Plushies &amp; Toys 🧸</option>
+              <option value="Fashion & Bows">Fashion &amp; Bows 🎀</option>
+              <option value="Tech & Gaming">Tech &amp; Gaming 🎮</option>
+              <option value="Room Decor">Room Decor 🪞</option>
+              <option value="Beauty & Care">Beauty &amp; Care 💄</option>
+              <option value="Books & Art">Books &amp; Art 🎨</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="wishPrice">Price (<span id="modalCurrencySymbol">€</span>)</label>
+            <input type="number" id="wishPrice" class="kawaii-input" min="0" step="0.01" placeholder="29.99" />
+          </div>
+
+          <div class="form-group">
+            <label for="wishPriority">Dream Priority</label>
+            <select id="wishPriority" class="kawaii-select">
+              <option value="3">♥♥♥ Super Dream Wish!</option>
+              <option value="2">♥♥♡ Really Want!</option>
+              <option value="1">♥♡♡ Cute Idea</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="wishLink">Store Link (Optional)</label>
+            <input type="url" id="wishLink" class="kawaii-input" placeholder="https://..." />
+          </div>
+
+          <div class="form-group full">
+            <label for="wishImage">Image URL (Optional — leaves cute bunny art if empty)</label>
+            <input type="url" id="wishImage" class="kawaii-input" placeholder="https://..." />
+          </div>
+
+          <div class="form-group full">
+            <label for="wishNotes">Notes, Size or Color Preference (Optional)</label>
+            <textarea id="wishNotes" class="kawaii-textarea" rows="2" placeholder="Pastel pink colorway, medium size, for my birthday..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-pill btn-cream" onclick="closeWishModal()">Cancel</button>
+          <button type="button" class="btn-pill btn-primary" onclick="commitSaveWish()">Save Wish 💖</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Share Wishlist Modal -->
+  <div id="shareModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="shareModalHeading" onclick="if(event.target===this) closeShareModal()">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 id="shareModalHeading">💌 Share Your Bunny Wishlist</h2>
+        <button type="button" class="close-modal-btn" aria-label="Close share modal" onclick="closeShareModal()">✕</button>
+      </div>
+
+      <div class="share-tabs">
+        <button type="button" class="share-tab-btn active" data-tab="link" onclick="switchShareTab('link')">🔗 Magic Link</button>
+        <button type="button" class="share-tab-btn" data-tab="card" onclick="switchShareTab('card')">🖼️ Cute PNG Card</button>
+        <button type="button" class="share-tab-btn" data-tab="text" onclick="switchShareTab('text')">💬 Chat List</button>
+      </div>
+
+      <!-- Tab 1: Magic Share Link -->
+      <div id="sharePanel-link" class="share-panel active">
+        <p style="font-size: 0.9rem; color: var(--cocoa-light); font-weight: 700;">
+          Send this magic link to friends or family! Your entire wishlist is encoded right inside the URL so they can view &amp; reserve gifts with zero login required 🎁
+        </p>
+        <input type="text" id="magicShareUrlInput" class="kawaii-input" readonly onclick="this.select()" />
+        <button type="button" class="btn-pill btn-primary" onclick="copyMagicLink()">Copy Link 🔗</button>
+      </div>
+
+      <!-- Tab 2: Downloadable PNG Card -->
+      <div id="sharePanel-card" class="share-panel">
+        <div class="share-preview-canvas-wrap">
+          <canvas id="shareCardCanvas" width="800" height="1050"></canvas>
+        </div>
+        <button type="button" class="btn-pill btn-mint" onclick="downloadShareCardPNG()">⬇️ Download Cute Card (.PNG)</button>
+      </div>
+
+      <!-- Tab 3: Formatted Chat List -->
+      <div id="sharePanel-text" class="share-panel">
+        <p style="font-size: 0.9rem; color: var(--cocoa-light); font-weight: 700;">
+          Ready to paste into WhatsApp, iMessage, or Discord!
+        </p>
+        <textarea id="formattedChatText" class="kawaii-textarea" rows="8" readonly></textarea>
+        <button type="button" class="btn-pill btn-primary" onclick="copyFormattedChatText()">💌 Copy Formatted Text</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <script>
+    /* =========================================================================
+       STORAGE KEYS & DEFAULT STARTER ITEMS
+       ========================================================================= */
+    const STORAGE_KEY = 'kawaii_bunny_wishlist_v1';
+    const INIT_KEY = 'kawaii_bunny_wishlist_init_v1';
+    const RESERVE_PREFIX = 'kawaii_bunny_reserved_';
+
+    const CATEGORIES = [
+      { id: 'all', label: 'All 🌸', emoji: '🌸' },
+      { id: 'Plushies & Toys', label: 'Plushies & Toys 🧸', emoji: '🧸' },
+      { id: 'Fashion & Bows', label: 'Fashion & Bows 🎀', emoji: '🎀' },
+      { id: 'Tech & Gaming', label: 'Tech & Gaming 🎮', emoji: '🎮' },
+      { id: 'Room Decor', label: 'Room Decor 🪞', emoji: '🪞' },
+      { id: 'Beauty & Care', label: 'Beauty & Care 💄', emoji: '💄' },
+      { id: 'Books & Art', label: 'Books & Art 🎨', emoji: '🎨' }
+    ];
+
+    const STARTER_ITEMS = [
+      {
+        id: 'wish-starter-1',
+        title: 'Strawberry Milk Bunny Plushie',
+        category: 'Plushies & Toys',
+        price: 28.50,
+        priority: 3,
+        link: '',
+        image: '',
+        notes: 'Jumbo 35cm pastel pink bunny holding a strawberry milk carton!',
+        granted: false,
+        createdAt: Date.now() - 4000
+      },
+      {
+        id: 'wish-starter-2',
+        title: 'Pastel Mechanical Keyboard',
+        category: 'Tech & Gaming',
+        price: 119.00,
+        priority: 3,
+        link: '',
+        image: '',
+        notes: 'Creamy linear switches with strawberry & bunny artisan keycaps.',
+        granted: false,
+        createdAt: Date.now() - 3000
+      },
+      {
+        id: 'wish-starter-3',
+        title: 'My Melody Ceramic Mug',
+        category: 'Room Decor',
+        price: 18.00,
+        priority: 2,
+        link: '',
+        image: '',
+        notes: 'With cute 3D bunny ears lid for morning matcha & hot cocoa.',
+        granted: true,
+        createdAt: Date.now() - 2000
+      },
+      {
+        id: 'wish-starter-4',
+        title: 'Ribbon Lace Cardigan',
+        category: 'Fashion & Bows',
+        price: 46.00,
+        priority: 2,
+        link: '',
+        image: '',
+        notes: 'Soft baby-pink knit cardigan with satin bow ties (Size S/M).',
+        granted: false,
+        createdAt: Date.now() - 1000
+      }
+    ];
+
+    /* =========================================================================
+       APPLICATION STATE
+       ========================================================================= */
+    let state = {
+      title: '✨ My Dreamy Bunny Wishlist ✨',
+      currency: '€',
+      items: []
+    };
+
+    let activeCategory = 'all';
+    let activeStatus = 'all';
+    let searchQuery = '';
+    let sortMode = 'newest';
+
+    let isFriendHashMode = false;
+    let isFriendPreview = false;
+    let sharedHashKey = '';
+    let reservedGifts = {};
+    let lastDeletedRecord = null;
+
+    /* =========================================================================
+       BESPOKE PASTEL SVG ARTWORK PER CATEGORY
+       ========================================================================= */
+    function getCategorySVG(category) {
+      switch (category) {
+        case 'Plushies & Toys':
+          return `
+            <svg viewBox="0 0 120 120" width="116" height="116" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="44" cy="30" rx="9" ry="22" transform="rotate(-12 44 30)" fill="#ffb3c6" stroke="#59333e" stroke-width="3"/>
+              <ellipse cx="76" cy="30" rx="9" ry="22" transform="rotate(12 76 30)" fill="#ffb3c6" stroke="#59333e" stroke-width="3"/>
+              <circle cx="60" cy="66" r="30" fill="#fffdfd" stroke="#59333e" stroke-width="3"/>
+              <circle cx="49" cy="63" r="3.2" fill="#59333e"/>
+              <circle cx="71" cy="63" r="3.2" fill="#59333e"/>
+              <ellipse cx="42" cy="71" rx="5" ry="3" fill="#ff85a2"/>
+              <ellipse cx="78" cy="71" rx="5" ry="3" fill="#ff85a2"/>
+              <path d="M55 74 Q60 79 65 74" fill="none" stroke="#59333e" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M48 92 L60 102 L72 92 Z" fill="#ff4d7d" stroke="#59333e" stroke-width="2.5"/>
+            </svg>`;
+        case 'Fashion & Bows':
+          return `
+            <svg viewBox="0 0 120 120" width="116" height="116" xmlns="http://www.w3.org/2000/svg">
+              <path d="M60 44 C38 22, 16 32, 24 54 C30 70, 50 60, 60 52 C70 60, 90 70, 96 54 C104 32, 82 22, 60 44 Z" fill="#ff85a2" stroke="#59333e" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M52 56 L40 94 L52 88 L60 96 L60 56 Z" fill="#ffb3c6" stroke="#59333e" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M68 56 L80 94 L68 88 L60 96 L60 56 Z" fill="#ffb3c6" stroke="#59333e" stroke-width="3" stroke-linejoin="round"/>
+              <rect x="52" y="42" width="16" height="16" rx="6" fill="#fff3b0" stroke="#59333e" stroke-width="3"/>
+            </svg>`;
+        case 'Tech & Gaming':
+          return `
+            <svg viewBox="0 0 120 120" width="116" height="116" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="44" cy="28" rx="6" ry="16" transform="rotate(-14 44 28)" fill="#ffb3c6" stroke="#59333e" stroke-width="2.8"/>
+              <ellipse cx="76" cy="28" rx="6" ry="16" transform="rotate(14 76 28)" fill="#ffb3c6" stroke="#59333e" stroke-width="2.8"/>
+              <rect x="22" y="46" width="76" height="46" rx="22" fill="#fffdfd" stroke="#59333e" stroke-width="3"/>
+              <path d="M40 62 V76 M33 69 H47" stroke="#ff4d7d" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="78" cy="63" r="4" fill="#ff7597"/>
+              <circle cx="86" cy="70" r="4" fill="#2ec4b6"/>
+              <circle cx="78" cy="77" r="4" fill="#ffd166"/>
+              <circle cx="70" cy="70" r="4" fill="#b388eb"/>
+            </svg>`;
+        case 'Room Decor':
+          return `
+            <svg viewBox="0 0 120 120" width="116" height="116" xmlns="http://www.w3.org/2000/svg">
+              <path d="M60 32 C50 18, 28 22, 28 40 C28 58, 60 76, 60 76 C60 76, 92 58, 92 40 C92 22, 70 18, 60 32 Z" fill="#e0fbfc" stroke="#ff7597" stroke-width="4"/>
+              <path d="M44 34 L38 46" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+              <rect x="55" y="76" width="10" height="18" fill="#ffb3c6" stroke="#59333e" stroke-width="2.8"/>
+              <ellipse cx="60" cy="96" rx="22" ry="6" fill="#ff85a2" stroke="#59333e" stroke-width="2.8"/>
+            </svg>`;
+        case 'Beauty & Care':
+          return `
+            <svg viewBox="0 0 120 120" width="116" height="116" xmlns="http://www.w3.org/2000/svg">
+              <rect x="34" y="54" width="24" height="42" rx="6" fill="#ffb3c6" stroke="#59333e" stroke-width="3"/>
+              <rect x="38" y="42" width="16" height="12" fill="#fff3b0" stroke="#59333e" stroke-width="2.8"/>
+              <path d="M40 42 L40 28 L52 22 L52 42 Z" fill="#ff3b6b" stroke="#59333e" stroke-width="2.8" stroke-linejoin="round"/>
+              <circle cx="80" cy="74" r="22" fill="#ff85a2" stroke="#59333e" stroke-width="3"/>
+              <circle cx="80" cy="74" r="14" fill="#fffdfd" stroke="#59333e" stroke-width="2"/>
+              <path d="M80 69 C78 66, 74 67, 74 71 C74 75, 80 79, 80 79 C80 79, 86 75, 86 71 C86 67, 82 66, 80 69 Z" fill="#ff4d7d"/>
+            </svg>`;
+        case 'Books & Art':
+        default:
+          return `
+            <svg viewBox="0 0 120 120" width="116" height="116" xmlns="http://www.w3.org/2000/svg">
+              <rect x="30" y="26" width="54" height="68" rx="10" fill="#ffb3c6" stroke="#59333e" stroke-width="3"/>
+              <rect x="38" y="34" width="38" height="22" rx="6" fill="#fffdfd" stroke="#59333e" stroke-width="2.5"/>
+              <path d="M57 41 C55 38, 51 39, 51 43 C51 47, 57 51, 57 51 C57 51, 63 47, 63 43 C63 39, 59 38, 57 41 Z" fill="#ff4d7d"/>
+              <line x1="88" y1="88" x2="104" y2="38" stroke="#fff3b0" stroke-width="5" stroke-linecap="round"/>
+              <polygon points="104,26 107,34 115,34 109,39 111,47 104,42 97,47 99,39 93,34 101,34" fill="#ff7597" stroke="#59333e" stroke-width="2"/>
+            </svg>`;
+      }
+    }
+
+    /* =========================================================================
+       PERSISTENCE & HASH ENCODING (BULLETPROOF SAVE LOGIC)
+       ========================================================================= */
+    function encodeStateToHash(dataObj) {
+      const json = JSON.stringify({
+        t: dataObj.title,
+        c: dataObj.currency,
+        i: dataObj.items
+      });
+      return btoa(unescape(encodeURIComponent(json)))
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '');
+    }
+
+    function decodeHashToState(hashStr) {
+      try {
+        let base64 = hashStr.replace(/-/g, '+').replace(/_/g, '/');
+        while (base64.length % 4) base64 += '=';
+        const json = decodeURIComponent(escape(atob(base64)));
+        const parsed = JSON.parse(json);
+        if (!parsed || !Array.isArray(parsed.i)) return null;
+        return {
+          title: parsed.t || '✨ Shared Bunny Wishlist ✨',
+          currency: parsed.c || '€',
+          items: parsed.i
+        };
+      } catch (err) {
+        console.error('Failed to decode shared wishlist hash:', err);
+        return null;
+      }
+    }
+
+    function saveState() {
+      if (isFriendHashMode || isFriendPreview) return;
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        localStorage.setItem(INIT_KEY, 'true');
+
+        // Remove any #list= hash cleanly so a page reload never reverts to an older shared URL
+        if (window.location.hash && window.location.hash.startsWith('#list=')) {
+          try {
+            window.history.replaceState(null, '', window.location.pathname + window.location.search);
+          } catch (_) {
+            // Safe ignore in sandboxed frames
+          }
+        }
+      } catch (err) {
+        console.error('Error saving to localStorage:', err);
+        showToast('Could not save to browser storage ⚠️');
+      }
+    }
+
+    function loadPersonalState() {
+      const initialized = localStorage.getItem(INIT_KEY);
+      const raw = localStorage.getItem(STORAGE_KEY);
+
+      if (raw) {
+        try {
+          const parsed = JSON.parse(raw);
+          if (parsed && Array.isArray(parsed.items)) {
+            state = {
+              title: parsed.title || '✨ My Dreamy Bunny Wishlist ✨',
+              currency: parsed.currency || '€',
+              items: parsed.items
+            };
+            localStorage.setItem(INIT_KEY, 'true');
+            return;
+          }
+        } catch (err) {
+          console.warn('Recovering from invalid localStorage JSON:', err);
+        }
+      }
+
+      if (!initialized) {
+        state = {
+          title: '✨ My Dreamy Bunny Wishlist ✨',
+          currency: '€',
+          items: JSON.parse(JSON.stringify(STARTER_ITEMS))
+        };
+        saveState();
+      } else {
+        state = {
+          title: '✨ My Dreamy Bunny Wishlist ✨',
+          currency: '€',
+          items: []
+        };
+      }
+    }
+
+    function loadReservedMap() {
+      if (!sharedHashKey) {
+        reservedGifts = {};
+        return;
+      }
+      try {
+        const raw = localStorage.getItem(RESERVE_PREFIX + sharedHashKey);
+        reservedGifts = raw ? JSON.parse(raw) : {};
+      } catch (_) {
+        reservedGifts = {};
+      }
+    }
+
+    function saveReservedMap() {
+      if (!sharedHashKey) return;
+      try {
+        localStorage.setItem(RESERVE_PREFIX + sharedHashKey, JSON.stringify(reservedGifts));
+      } catch (_) {}
+    }
+
+    function initApp() {
+      const hash = window.location.hash || '';
+      if (hash.startsWith('#list=') && hash.length > 6) {
+        const encoded = hash.slice(6);
+        const decoded = decodeHashToState(encoded);
+        if (decoded) {
+          state = decoded;
+          isFriendHashMode = true;
+          sharedHashKey = encoded.slice(0, 28);
+          loadReservedMap();
+          renderAll();
+          return;
+        }
+      }
+
+      isFriendHashMode = false;
+      isFriendPreview = false;
+      loadPersonalState();
+      renderAll();
+    }
+
+    /* =========================================================================
+       RENDERING & UI UPDATES
+       ========================================================================= */
+    function formatMoney(amount) {
+      const num = Number(amount) || 0;
+      return `${state.currency}${num.toFixed(2)}`;
+    }
+
+    function escapeHTML(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function renderPriorityHearts(priority) {
+      const p = Number(priority) || 1;
+      return '♥'.repeat(p) + '♡'.repeat(Math.max(0, 3 - p));
+    }
+
+    function renderAll() {
+      const isReadOnly = isFriendHashMode || isFriendPreview;
+
+      // Update Header Title & Editable State
+      const titleEl = document.getElementById('wishlistTitle');
+      if (document.activeElement !== titleEl) {
+        titleEl.textContent = state.title;
+      }
+      titleEl.contentEditable = isReadOnly ? 'false' : 'true';
+      document.getElementById('titleEditHint').style.display = isReadOnly ? 'none' : 'inline-block';
+
+      // Friend Banner & Owner Bar Visibility
+      const friendBanner = document.getElementById('friendBanner');
+      const ownerBar = document.getElementById('ownerActionBar');
+      const exitBtn = document.getElementById('exitPreviewBtn');
+
+      if (isReadOnly) {
+        friendBanner.classList.add('active');
+        ownerBar.style.display = 'none';
+        exitBtn.style.display = isFriendPreview ? 'inline-block' : 'none';
+      } else {
+        friendBanner.classList.remove('active');
+        ownerBar.style.display = 'flex';
+      }
+
+      // Currency Pills
+      document.querySelectorAll('.currency-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.curr === state.currency);
+      });
+
+      // Stats Pills
+      const totalCount = state.items.length;
+      const estimatedTotal = state.items.reduce((sum, item) => sum + (Number(item.price) || 0), 0);
+      const grantedCount = state.items.filter(item => item.granted).length;
+
+      document.getElementById('statTotalCount').textContent = totalCount;
+      document.getElementById('statEstimatedTotal').textContent = formatMoney(estimatedTotal);
+      document.getElementById('statGrantedCount').textContent = grantedCount;
+
+      // Category Filter Pills
+      const catContainer = document.getElementById('categoryPills');
+      catContainer.innerHTML = CATEGORIES.map(cat => {
+        const count = cat.id === 'all'
+          ? state.items.length
+          : state.items.filter(item => item.category === cat.id).length;
+        const isActive = activeCategory === cat.id;
+        return `<button type="button" class="cat-pill ${isActive ? 'active' : ''}" onclick="setCategoryFilter('${cat.id}')">${cat.label} (${count})</button>`;
+      }).join('');
+
+      // Status Tabs
+      document.querySelectorAll('.status-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.status === activeStatus);
+      });
+
+      // Filter & Sort Items
+      let filtered = state.items.filter(item => {
+        if (activeCategory !== 'all' && item.category !== activeCategory) return false;
+        if (activeStatus === 'wishing' && item.granted) return false;
+        if (activeStatus === 'granted' && !item.granted) return false;
+        if (searchQuery.trim() !== '') {
+          const q = searchQuery.toLowerCase();
+          const inTitle = (item.title || '').toLowerCase().includes(q);
+          const inNotes = (item.notes || '').toLowerCase().includes(q);
+          const inCat = (item.category || '').toLowerCase().includes(q);
+          if (!inTitle && !inNotes && !inCat) return false;
+        }
+        return true;
+      });
+
+      filtered.sort((a, b) => {
+        if (sortMode === 'priority') {
+          return (Number(b.priority) - Number(a.priority)) || ((b.createdAt || 0) - (a.createdAt || 0));
+        }
+        if (sortMode === 'price-asc') {
+          return (Number(a.price) || 0) - (Number(b.price) || 0);
+        }
+        if (sortMode === 'price-desc') {
+          return (Number(b.price) || 0) - (Number(a.price) || 0);
+        }
+        return (b.createdAt || 0) - (a.createdAt || 0);
+      });
+
+      // Render Grid
+      const grid = document.getElementById('wishGrid');
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-emoji">🐰🍓✨</div>
+            <h3 style="font-size: 1.3rem; margin-bottom: 6px;">No wishes found here yet!</h3>
+            <p style="color: var(--cocoa-light); font-weight: 700; margin-bottom: 16px;">
+              ${state.items.length === 0 ? 'Add your very first dreamy item to your bunny stationery list!' : 'Try clearing your search or switching category filters 🌸'}
+            </p>
+            ${!isReadOnly
+              ? `<button type="button" class="btn-pill btn-primary" onclick="openAddModal()">+ Add New Wish 🌸</button>`
+              : ''}
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => {
+        const safeTitle = escapeHTML(item.title);
+        const safeCat = escapeHTML(item.category);
+        const safeNotes = escapeHTML(item.notes);
+        const safeImg = escapeHTML(item.image);
+        const safeLink = escapeHTML(item.link);
+        const isReserved = Boolean(reservedGifts[item.id]);
+
+        const artHTML = item.image
+          ? `<img src="${safeImg}" alt="${safeTitle}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+             <div class="card-svg-art" style="display: none;">${getCategorySVG(item.category)}</div>`
+          : `<div class="card-svg-art">${getCategorySVG(item.category)}</div>`;
+
+        const grantedOverlay = item.granted
+          ? `<div class="granted-ribbon"><span>✨ Granted!</span></div>`
+          : '';
+
+        const actionsHTML = isReadOnly
+          ? `<button type="button" class="btn-pill btn-sm btn-reserve ${isReserved ? 'reserved' : ''}" onclick="toggleReserveGift('${item.id}', event)">
+               ${isReserved ? '✅ Reserved by a Friend!' : '🎁 Reserve Gift'}
+             </button>`
+          : `<button type="button" class="btn-pill btn-sm btn-grant ${item.granted ? 'granted-state' : ''}" onclick="toggleGranted('${item.id}', event)">
+               ${item.granted ? '↺ Un-grant' : '✨ Grant'}
+             </button>
+             <button type="button" class="btn-pill btn-sm btn-cream" title="Edit wish" onclick="openEditModal('${item.id}')">✏️ Edit</button>
+             <button type="button" class="btn-pill btn-sm btn-cream" title="Delete wish" onclick="deleteWish('${item.id}')">🗑️</button>`;
+
+        return `
+          <article class="wish-card ${item.granted ? 'is-granted' : ''}">
+            <div class="card-art-box">
+              <span class="priority-badge" title="Dream Priority">${renderPriorityHearts(item.priority)}</span>
+              <span class="category-badge">${safeCat}</span>
+              ${artHTML}
+              ${grantedOverlay}
+            </div>
+            <div class="card-body">
+              <div class="card-title-row">
+                <h3 class="card-title">${safeTitle}</h3>
+                <span class="price-badge">${formatMoney(item.price)}</span>
+              </div>
+              ${safeNotes ? `<p class="card-notes">${safeNotes}</p>` : ''}
+              ${safeLink ? `<a href="${safeLink}" target="_blank" rel="noopener noreferrer" class="store-link-btn">🛍️ View in Store</a>` : ''}
+              <div class="card-footer-actions">
+                ${actionsHTML}
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    /* =========================================================================
+       INTERACTIVE CONTROLS (ADD, EDIT, SAVE, DELETE, GRANT, FILTERS)
+       ========================================================================= */
+    function setCurrency(curr) {
+      state.currency = curr;
+      saveState();
+      renderAll();
+      showToast(`Currency updated to ${curr} 💕`);
+    }
+
+    function setCategoryFilter(catId) {
+      activeCategory = catId;
+      renderAll();
+    }
+
+    function setStatusFilter(status) {
+      activeStatus = status;
+      renderAll();
+    }
+
+    function handleSearchInput(val) {
+      searchQuery = val;
+      renderAll();
+    }
+
+    function handleSortChange(val) {
+      sortMode = val;
+      renderAll();
+    }
+
+    function openAddModal() {
+      document.getElementById('wishModalHeading').textContent = '🌸 Add a New Dream Wish';
+      document.getElementById('wishId').value = '';
+      document.getElementById('wishTitle').value = '';
+      document.getElementById('wishCategory').value = 'Plushies & Toys';
+      document.getElementById('wishPrice').value = '';
+      document.getElementById('wishPriority').value = '3';
+      document.getElementById('wishLink').value = '';
+      document.getElementById('wishImage').value = '';
+      document.getElementById('wishNotes').value = '';
+      document.getElementById('modalCurrencySymbol').textContent = state.currency;
+      document.getElementById('wishTitleError').classList.remove('visible');
+
+      document.getElementById('wishModal').classList.add('open');
+      setTimeout(() => document.getElementById('wishTitle').focus(), 40);
+    }
+
+    function openEditModal(id) {
+      const item = state.items.find(w => w.id === id);
+      if (!item) return;
+
+      document.getElementById('wishModalHeading').textContent = '✏️ Edit Dream Wish';
+      document.getElementById('wishId').value = item.id;
+      document.getElementById('wishTitle').value = item.title || '';
+      document.getElementById('wishCategory').value = item.category || 'Plushies & Toys';
+      document.getElementById('wishPrice').value = item.price !== undefined && item.price !== null ? item.price : '';
+      document.getElementById('wishPriority').value = String(item.priority || 2);
+      document.getElementById('wishLink').value = item.link || '';
+      document.getElementById('wishImage').value = item.image || '';
+      document.getElementById('wishNotes').value = item.notes || '';
+      document.getElementById('modalCurrencySymbol').textContent = state.currency;
+      document.getElementById('wishTitleError').classList.remove('visible');
+
+      document.getElementById('wishModal').classList.add('open');
+      setTimeout(() => document.getElementById('wishTitle').focus(), 40);
+    }
+
+    function closeWishModal() {
+      document.getElementById('wishModal').classList.remove('open');
+    }
+
+    function commitSaveWish() {
+      const titleInput = document.getElementById('wishTitle');
+      const rawTitle = titleInput.value.trim();
+
+      if (!rawTitle) {
+        document.getElementById('wishTitleError').classList.add('visible');
+        titleInput.focus();
+        return;
+      }
+
+      document.getElementById('wishTitleError').classList.remove('visible');
+
+      const existingId = document.getElementById('wishId').value.trim();
+      const category = document.getElementById('wishCategory').value || 'Plushies & Toys';
+      const parsedPrice = parseFloat(document.getElementById('wishPrice').value);
+      const price = Number.isFinite(parsedPrice) && parsedPrice >= 0 ? parsedPrice : 0;
+      const priority = parseInt(document.getElementById('wishPriority').value, 10) || 2;
+      const link = document.getElementById('wishLink').value.trim();
+      const image = document.getElementById('wishImage').value.trim();
+      const notes = document.getElementById('wishNotes').value.trim();
+
+      if (existingId) {
+        const idx = state.items.findIndex(w => w.id === existingId);
+        if (idx !== -1) {
+          state.items[idx] = {
+            ...state.items[idx],
+            title: rawTitle,
+            category,
+            price,
+            priority,
+            link,
+            image,
+            notes
+          };
+        }
+      } else {
+        const newItem = {
+          id: 'wish-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+          title: rawTitle,
+          category,
+          price,
+          priority,
+          link,
+          image,
+          notes,
+          granted: false,
+          createdAt: Date.now()
+        };
+        state.items.unshift(newItem);
+      }
+
+      // Immediately persist to localStorage
+      saveState();
+
+      // Reset filters & search so the newly saved wish is guaranteed to be visible right away
+      activeCategory = 'all';
+      activeStatus = 'all';
+      searchQuery = '';
+      document.getElementById('searchInput').value = '';
+
+      closeWishModal();
+      renderAll();
+      showToast('Saved to your wishlist! 🌸');
+    }
+
+    // Allow pressing Enter inside text/number modal fields to save cleanly
+    document.getElementById('wishForm').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && e.target.tagName === 'INPUT') {
+        e.preventDefault();
+        commitSaveWish();
+      }
+    });
+
+    function toggleGranted(id, evt) {
+      const item = state.items.find(w => w.id === id);
+      if (!item) return;
+
+      item.granted = !item.granted;
+      saveState();
+      renderAll();
+
+      if (item.granted) {
+        const x = evt ? evt.clientX : window.innerWidth / 2;
+        const y = evt ? evt.clientY : window.innerHeight / 2;
+        triggerBurst(x, y);
+        showToast(`Yay! "${item.title}" granted! ✨`);
+      } else {
+        showToast(`Moved "${item.title}" back to wishing 💭`);
+      }
+    }
+
+    function deleteWish(id) {
+      const idx = state.items.findIndex(w => w.id === id);
+      if (idx === -1) return;
+
+      const removed = state.items[idx];
+      lastDeletedRecord = { item: removed, index: idx };
+      state.items.splice(idx, 1);
+
+      saveState();
+      renderAll();
+      showToast(`Removed "${removed.title}"`, true);
+    }
+
+    function undoLastDelete() {
+      if (!lastDeletedRecord) return;
+      const { item, index } = lastDeletedRecord;
+      const safeIndex = Math.min(Math.max(0, index), state.items.length);
+      state.items.splice(safeIndex, 0, item);
+      lastDeletedRecord = null;
+
+      saveState();
+      renderAll();
+      showToast(`Restored "${item.title}"! 🐰`);
+    }
+
+    /* =========================================================================
+       EDITABLE HEADER TITLE PERSISTENCE
+       ========================================================================= */
+    const titleHeaderEl = document.getElementById('wishlistTitle');
+    titleHeaderEl.addEventListener('blur', function () {
+      if (isFriendHashMode || isFriendPreview) return;
+      const clean = titleHeaderEl.textContent.trim() || '✨ My Dreamy Bunny Wishlist ✨';
+      titleHeaderEl.textContent = clean;
+      state.title = clean;
+      saveState();
+    });
+
+    titleHeaderEl.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        titleHeaderEl.blur();
+      }
+    });
+
+    /* =========================================================================
+       FRIEND / GIFT-GIVER MODE & SHARING SUITE
+       ========================================================================= */
+    function enterFriendPreview() {
+      isFriendPreview = true;
+      sharedHashKey = 'preview_' + encodeStateToHash(state).slice(0, 20);
+      loadReservedMap();
+      renderAll();
+      showToast('Previewing Friend Gift-Giver View! 👀');
+    }
+
+    function exitFriendPreview() {
+      isFriendPreview = false;
+      renderAll();
+      showToast('Back to your personal editor view! 🌸');
+    }
+
+    function toggleReserveGift(id, evt) {
+      if (reservedGifts[id]) {
+        delete reservedGifts[id];
+        saveReservedMap();
+        renderAll();
+        showToast('Gift reservation removed 🎀');
+      } else {
+        reservedGifts[id] = true;
+        saveReservedMap();
+        renderAll();
+        const x = evt ? evt.clientX : window.innerWidth / 2;
+        const y = evt ? evt.clientY : window.innerHeight / 2;
+        triggerBurst(x, y);
+        showToast('Gift reserved! Thank you! 🎁💖');
+      }
+    }
+
+    function saveSharedCopyToMyList() {
+      const copyItems = state.items.map((item, idx) => ({
+        ...item,
+        id: 'wish-copy-' + Date.now() + '-' + idx
+      }));
+      state = {
+        title: state.title + ' (My Copy)',
+        currency: state.currency,
+        items: copyItems
+      };
+      isFriendHashMode = false;
+      isFriendPreview = false;
+      saveState();
+      renderAll();
+      showToast('Saved a copy to your personal wishlist! 💖');
+    }
+
+    function buildMagicShareLink() {
+      const encoded = encodeStateToHash(state);
+      const origin = window.location.origin && window.location.origin !== 'null'
+        ? window.location.origin
+        : 'https://wishlist.local';
+      const path = window.location.pathname && window.location.pathname !== 'srcdoc'
+        ? window.location.pathname
+        : '/wishlist.html';
+      return `${origin}${path}#list=${encoded}`;
+    }
+
+    function openShareModal() {
+      document.getElementById('magicShareUrlInput').value = buildMagicShareLink();
+      document.getElementById('formattedChatText').value = generateFormattedChatText();
+      drawShareCardCanvas();
+      switchShareTab('link');
+      document.getElementById('shareModal').classList.add('open');
+    }
+
+    function closeShareModal() {
+      document.getElementById('shareModal').classList.remove('open');
+    }
+
+    function switchShareTab(tabName) {
+      document.querySelectorAll('.share-tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === tabName);
+      });
+      document.querySelectorAll('.share-panel').forEach(panel => {
+        panel.classList.toggle('active', panel.id === 'sharePanel-' + tabName);
+      });
+      if (tabName === 'card') {
+        drawShareCardCanvas();
+      }
+    }
+
+    function copyTextFallback(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+      } catch (_) {}
+      document.body.removeChild(ta);
+    }
+
+    function copyMagicLink() {
+      const url = document.getElementById('magicShareUrlInput').value;
+      copyTextFallback(url);
+      showToast('Magic share link copied! 🔗💌');
+    }
+
+    function generateFormattedChatText() {
+      const lines = [
+        `${state.title}`,
+        `🍓 ${state.items.length} Wishes | Total: ${formatMoney(state.items.reduce((s, i) => s + (Number(i.price) || 0), 0))}`,
+        `────────────────────`
+      ];
+      state.items.forEach((item, i) => {
+        const mark = item.granted ? '✅' : '🌸';
+        const hearts = '♥'.repeat(Number(item.priority) || 1);
+        lines.push(`${i + 1}. ${mark} ${item.title} — ${formatMoney(item.price)} (${hearts})`);
+        if (item.notes) lines.push(`   📝 ${item.notes}`);
+        if (item.link) lines.push(`   🛍️ ${item.link}`);
+      });
+      lines.push(`────────────────────`);
+      lines.push(`🎁 View & Reserve Gifts: ${buildMagicShareLink()}`);
+      return lines.join('\n');
+    }
+
+    function copyFormattedChatText() {
+      const txt = document.getElementById('formattedChatText').value;
+      copyTextFallback(txt);
+      showToast('Formatted chat wishlist copied! 💬✨');
+    }
+
+    function drawShareCardCanvas() {
+      const canvas = document.getElementById('shareCardCanvas');
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width;
+      const H = canvas.height;
+
+      // Pastel cream background
+      ctx.fillStyle = '#fff5f8';
+      ctx.fillRect(0, 0, W, H);
+
+      // Polka dots
+      ctx.fillStyle = 'rgba(255, 117, 151, 0.16)';
+      for (let y = 26; y < H; y += 36) {
+        for (let x = 26; x < W; x += 36) {
+          ctx.beginPath();
+          ctx.arc(x, y, 4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // Main stationery card frame
+      ctx.fillStyle = '#fffdfd';
+      ctx.strokeStyle = '#ffb3c6';
+      ctx.lineWidth = 8;
+      roundRect(ctx, 36, 36, W - 72, H - 72, 36);
+      ctx.fill();
+      ctx.stroke();
+
+      // Inner dashed border
+      ctx.save();
+      ctx.setLineDash([12, 8]);
+      ctx.strokeStyle = '#ff7597';
+      ctx.lineWidth = 3;
+      roundRect(ctx, 54, 54, W - 108, H - 108, 26);
+      ctx.stroke();
+      ctx.restore();
+
+      // Chibi Round Squishy Bunny Mascot Header Emblem
+      ctx.fillStyle = '#ff85a2';
+      ctx.strokeStyle = '#59333e';
+      ctx.lineWidth = 4;
+      
+      // Left ear
+      ctx.beginPath();
+      ctx.ellipse(360, 125, 16, 32, -0.6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      
+      // Right ear
+      ctx.beginPath();
+      ctx.ellipse(440, 125, 16, 32, 0.6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Huge squishy pink hood (head)
+      ctx.beginPath();
+      ctx.ellipse(400, 150, 48, 40, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Cream face
+      ctx.fillStyle = '#fffdfd';
+      ctx.beginPath();
+      ctx.ellipse(400, 154, 40, 32, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Eyes
+      ctx.fillStyle = '#59333e';
+      ctx.beginPath();
+      ctx.ellipse(376, 154, 4.5, 6.5, 0, 0, Math.PI * 2);
+      ctx.ellipse(424, 154, 4.5, 6.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Eye Highlights
+      ctx.fillStyle = '#fff';
+      ctx.beginPath();
+      ctx.arc(374, 151, 2, 0, Math.PI * 2);
+      ctx.arc(422, 151, 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Cheeks
+      ctx.fillStyle = '#ffb3c6';
+      ctx.beginPath();
+      ctx.ellipse(368, 162, 7.5, 5, 0, 0, Math.PI * 2);
+      ctx.ellipse(432, 162, 7.5, 5, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Nose
+      ctx.fillStyle = '#ff4d7d';
+      ctx.beginPath();
+      ctx.arc(400, 159, 3, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Cute Neck Bow
+      ctx.lineWidth = 3;
+      ctx.fillStyle = '#fffdfd';
+      ctx.strokeStyle = '#59333e';
+      
+      // Left loop
+      ctx.beginPath();
+      ctx.ellipse(388, 186, 10, 7.5, -0.25, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      
+      // Right loop
+      ctx.beginPath();
+      ctx.ellipse(412, 186, 10, 7.5, 0.25, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      
+      // Bow knot
+      ctx.fillStyle = '#fff3b0';
+      ctx.beginPath();
+      ctx.arc(400, 186, 5.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Wishlist Title
+      ctx.fillStyle = '#59333e';
+      ctx.font = '700 32px Fredoka, sans-serif';
+      ctx.textAlign = 'center';
+      const displayTitle = state.title.length > 34 ? state.title.slice(0, 32) + '…' : state.title;
+      ctx.fillText(displayTitle, W / 2, 236);
+
+      // Subtitle / Date & Stats
+      const dateStr = new Date().toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+      const totalEst = state.items.reduce((s, i) => s + (Number(i.price) || 0), 0);
+      ctx.fillStyle = '#ff4d7d';
+      ctx.font = '700 20px Nunito, sans-serif';
+      ctx.fillText(`🍓 ${state.items.length} Wishes  •  Est. ${formatMoney(totalEst)}  •  ${dateStr}`, W / 2, 272);
+
+      // Divider
+      ctx.strokeStyle = '#ffb3c6';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(96, 298);
+      ctx.lineTo(W - 96, 298);
+      ctx.stroke();
+
+      // Top Wishes List (up to 7 items)
+      const topWishes = state.items.slice(0, 7);
+      let yPos = 342;
+      topWishes.forEach((item, idx) => {
+        ctx.fillStyle = idx % 2 === 0 ? '#fff5f8' : '#ffeef4';
+        roundRect(ctx, 84, yPos - 28, W - 168, 68, 18);
+        ctx.fill();
+
+        ctx.textAlign = 'left';
+        ctx.fillStyle = '#59333e';
+        ctx.font = '700 22px Fredoka, sans-serif';
+        const prefix = item.granted ? '✨ ' : '🎀 ';
+        const trimmedName = item.title.length > 28 ? item.title.slice(0, 26) + '…' : item.title;
+        ctx.fillText(prefix + trimmedName, 106, yPos + 5);
+
+        ctx.fillStyle = '#8c5a67';
+        ctx.font = '700 16px Nunito, sans-serif';
+        ctx.fillText(`${item.category}  •  ${renderPriorityHearts(item.priority)}`, 108, yPos + 28);
+
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#ff4d7d';
+        ctx.font = '700 23px Fredoka, sans-serif';
+        ctx.fillText(formatMoney(item.price), W - 106, yPos + 12);
+
+        yPos += 82;
+      });
+
+      if (state.items.length > 7) {
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#8c5a67';
+        ctx.font = '700 18px Nunito, sans-serif';
+        ctx.fillText(`+ ${state.items.length - 7} more dreamy wishes inside! 🌸`, W / 2, yPos + 6);
+      }
+
+      // Footer
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#8c5a67';
+      ctx.font = '700 17px Nunito, sans-serif';
+      ctx.fillText('Made with Kawaii Bunny Dream Wishlist 🐰🍓', W / 2, H - 68);
+    }
+
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
+
+    function downloadShareCardPNG() {
+      drawShareCardCanvas();
+      const canvas = document.getElementById('shareCardCanvas');
+      const link = document.createElement('a');
+      link.download = 'kawaii-bunny-wishlist.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      showToast('Downloaded cute wishlist card (.PNG)! 🖼️🌸');
+    }
+
+    /* =========================================================================
+       EXPORT / IMPORT JSON BACKUP
+       ========================================================================= */
+    function exportBackupJSON() {
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'kawaii-bunny-wishlist-backup.json';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Exported wishlist backup (.JSON)! 💾');
+    }
+
+    function importBackupJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          if (!parsed || !Array.isArray(parsed.items)) {
+            showToast('Invalid wishlist backup file ⚠️');
+            return;
+          }
+          state = {
+            title: parsed.title || '✨ My Dreamy Bunny Wishlist ✨',
+            currency: parsed.currency || '€',
+            items: parsed.items
+          };
+          saveState();
+          renderAll();
+          showToast('Restored wishlist from JSON backup! 🌸✨');
+        } catch (_) {
+          showToast('Could not read JSON file ⚠️');
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = '';
+    }
+
+    /* =========================================================================
+       TOAST NOTIFICATIONS & CELEBRATORY PARTICLE BURST
+       ========================================================================= */
+    function showToast(message, showUndo = false) {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = 'kawaii-toast';
+
+      const span = document.createElement('span');
+      span.textContent = message;
+      toast.appendChild(span);
+
+      if (showUndo) {
+        const undoBtn = document.createElement('button');
+        undoBtn.type = 'button';
+        undoBtn.className = 'undo-btn';
+        undoBtn.textContent = 'Undo ↺';
+        undoBtn.onclick = () => {
+          undoLastDelete();
+          toast.remove();
+        };
+        toast.appendChild(undoBtn);
+      }
+
+      container.appendChild(toast);
+      setTimeout(() => {
+        if (toast.parentNode) toast.remove();
+      }, showUndo ? 5000 : 3000);
+    }
+
+    const burstCanvas = document.getElementById('burstCanvas');
+    const burstCtx = burstCanvas.getContext('2d');
+    let burstParticles = [];
+    let burstAnimating = false;
+
+    function resizeBurstCanvas() {
+      burstCanvas.width = window.innerWidth;
+      burstCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeBurstCanvas);
+    resizeBurstCanvas();
+
+    function boopMascot(evt) {
+      triggerBurst(evt.clientX, evt.clientY);
+      showToast('Boop! Bunny wishes you good luck! 🐰🍓');
+    }
+
+    function triggerBurst(x, y) {
+      const symbols = ['💖', '🍓', '✨', '🌸', '🎀'];
+      for (let i = 0; i < 22; i++) {
+        const angle = (Math.PI * 2 * i) / 22 + (Math.random() - 0.5) * 0.35;
+        const speed = 2.6 + Math.random() * 5.2;
+        burstParticles.push({
+          x,
+          y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - 2.2,
+          gravity: 0.16,
+          alpha: 1,
+          size: 16 + Math.random() * 10,
+          symbol: symbols[i % symbols.length]
+        });
+      }
+      if (!burstAnimating) {
+        burstAnimating = true;
+        requestAnimationFrame(animateBurst);
+      }
+    }
+
+    function animateBurst() {
+      burstCtx.clearRect(0, 0, burstCanvas.width, burstCanvas.height);
+      burstParticles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.gravity;
+        p.alpha -= 0.018;
+
+        if (p.alpha > 0) {
+          burstCtx.save();
+          burstCtx.globalAlpha = Math.max(0, p.alpha);
+          burstCtx.font = `${p.size}px serif`;
+          burstCtx.textAlign = 'center';
+          burstCtx.fillText(p.symbol, p.x, p.y);
+          burstCtx.restore();
+        }
+      });
+
+      burstParticles = burstParticles.filter(p => p.alpha > 0);
+      if (burstParticles.length > 0) {
+        requestAnimationFrame(animateBurst);
+      } else {
+        burstAnimating = false;
+      }
+    }
+
+    // Boot App
+    initApp();
+  </script>
+</body>
+</html>
